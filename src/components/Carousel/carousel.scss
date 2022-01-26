@@ -1,0 +1,73 @@
+@import '/src/styles/globals';
+@import '/src/styles/components/containers';
+@import '/src/styles/components/animations';
+
+.carousel-container {
+    position: relative;
+    &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: -1.7rem;
+        height: 100%;
+        width: 10rem;
+        background: linear-gradient(90deg, transparent, color(background));
+    }
+}
+.carousel-row {
+    position: relative;
+    bottom: -1.7rem;
+    overflow-x: scroll;
+    display: flex;
+    column-gap: $gap-md;
+    scroll-behavior: smooth;
+}
+
+.carousel-poster {
+    flex-shrink: 0;
+    width: 12rem;
+    height: 18rem;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.carousel-btn {
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    height: calc(100% - 1.7rem);
+    width: 4rem;
+    opacity: 0;
+    transition: $transition;
+    font-size: $text-lg;
+    background: none;
+    color: color(text);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    &:hover {
+        opacity: 1;
+    }
+
+    &.left {
+        left: 0;
+        background: linear-gradient(
+            -90deg,
+            color-rgba(background, 0),
+            color(background)
+        );
+    }
+
+    &.right {
+        right: 0;
+        background: linear-gradient(
+            90deg,
+            color-rgba(background, 0),
+            color(background)
+        );
+    }
+}

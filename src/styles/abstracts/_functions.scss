@@ -1,0 +1,19 @@
+@function color($base) {
+    $color: map-get($colors, $base);
+    @return $color;
+}
+
+@function color-darken($base, $value) {
+    $color: darken(map-get($colors, $base), $value);
+    @return $color;
+}
+
+@function color-lighten($base, $value) {
+    $color: lighten(map-get($colors, $base), $value);
+    @return $color;
+}
+
+@function color-rgba($base, $value) {
+    $color: rgba(map-get($colors, $base), $value);
+    @return $color;
+}

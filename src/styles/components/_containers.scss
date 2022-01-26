@@ -1,0 +1,15 @@
+.container {
+    margin: 0 auto;
+    padding-left: $gap-sm;
+    padding-right: $gap-sm;
+}
+
+.container-md {
+    @extend .container;
+    max-width: $view-width;
+}
+
+.container-first {
+    @extend .container-md;
+    padding-top: $header-height;
+}

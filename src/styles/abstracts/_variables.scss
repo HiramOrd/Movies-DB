@@ -1,0 +1,36 @@
+// Margins and Paddings
+$gap-xs: 0.8rem;
+$gap-sm: 1.6rem;
+$gap-md: 2.4rem;
+$gap-lg: 3.2rem;
+$gap-xl: 4rem;
+
+// Fonts
+$text-xs: 1.2rem;
+$text-sm: 1.4rem;
+$text-md: 1.8rem;
+$text-lg: 2.4rem;
+$text-xl: 3.2rem;
+$text-style: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+
+// Colors
+$colors: (
+    background: black,
+    text: white,
+    primary: #f0831d,
+    success: #2dee63,
+);
+
+// Breakpoints
+$media-sm: '375px';
+$media-md: '600px';
+$media-lg: '1200px';
+$media-xl: '1600px';
+
+// Preferences
+$radius: 0.5rem;
+$transition: 0.3s all ease;
+
+// Default Sizes
+$header-height: 6.8rem;
+$view-width: 110rem;

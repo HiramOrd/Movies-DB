@@ -1,0 +1,14 @@
+.anim {
+    cursor: pointer;
+    transition: $transition;
+}
+
+.anim-zoom {
+    @extend .anim;
+    &:hover {
+        transform: scale(1.1);
+    }
+    &:active {
+        transform: scale(0.9);
+    }
+}

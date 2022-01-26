@@ -1,0 +1,10 @@
+.card {
+    border-radius: $radius;
+    padding: $gap-xs $gap-sm;
+}
+
+.card-primary {
+    @extend .card;
+    background-color: color(text);
+    color: color(background);
+}
