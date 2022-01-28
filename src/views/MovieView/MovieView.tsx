@@ -1,10 +1,9 @@
-import { Carousel, Section } from 'components';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store';
-import { fetchMovie } from '_core/movie/middlewares';
-import { items1, items2 } from '__test__/temp/Covers';
-import { MovieBackground, Overview } from './Components';
+import { Carousel, Image, Section } from 'components';
+import { fetchImages, fetchMovie } from '_core/movie/middlewares';
+import { MovieBackground, MovieDetails, Overview } from './Components';
 import './movieView.scss';
 
 interface Props {
@@ -13,10 +12,11 @@ interface Props {
 
 export const MovieView = ({ movieID }: Props) => {
     const dispatch = useDispatch();
-    const { movie } = useSelector((state: RootState) => state.movie);
+    const { movie, images } = useSelector((state: RootState) => state.movie);
 
     useEffect(() => {
         dispatch(fetchMovie(movieID));
+        dispatch(fetchImages(movieID));
     }, [dispatch, movieID]);
 
     return (
@@ -28,15 +28,21 @@ export const MovieView = ({ movieID }: Props) => {
                 />
                 <div className="container-first">
                     <Overview movie={movie} />
-                    <Section title="Images">
-                        <Carousel items={items1} />
-                    </Section>
-                    <Section title="Videos">
-                        <Carousel items={items2} />
-                    </Section>
-                    <Section title="Info">
-                        <div>Hola</div>
-                    </Section>
+
+                    <MovieDetails
+                        movie={movie}
+                        poster={images?.posters?.at(0)}
+                    />
+
+                    {images?.backdrops && (
+                        <Section title="Images">
+                            <Carousel>
+                                {images.backdrops.map((image, i) => (
+                                    <Image image={image} key={i} />
+                                ))}
+                            </Carousel>
+                        </Section>
+                    )}
                 </div>
             </div>
         )

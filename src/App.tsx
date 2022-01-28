@@ -5,7 +5,7 @@ function App() {
     return (
         <div>
             <Header />
-            <MovieView movieID="566525" />
+            <MovieView movieID="75174" />
         </div>
     );
 }

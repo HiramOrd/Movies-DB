@@ -1,0 +1,25 @@
+@import 'animations';
+
+.btn-link {
+    color: color(primary);
+
+    &:hover {
+        color: color-darken(primary, 10);
+    }
+}
+
+.btn-outl-primary {
+    @extend .anim-zoom;
+    border: 1px solid color(primary);
+    border-radius: $radius;
+    padding: $gap-xs $gap-sm;
+    background: none;
+    outline: none;
+    color: color(primary);
+    transition: $transition;
+
+    &:hover {
+        background-color: color(primary);
+        color: color(text);
+    }
+}

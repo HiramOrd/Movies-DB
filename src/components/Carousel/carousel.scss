@@ -8,30 +8,22 @@
         content: '';
         position: absolute;
         right: 0;
-        bottom: -1.7rem;
+        bottom: 0rem;
         height: 100%;
         width: 10rem;
         background: linear-gradient(90deg, transparent, color(background));
     }
 }
 .carousel-row {
-    position: relative;
-    bottom: -1.7rem;
     overflow-x: scroll;
+    overflow-y: hidden;
     display: flex;
     column-gap: $gap-md;
     scroll-behavior: smooth;
-}
 
-.carousel-poster {
-    flex-shrink: 0;
-    width: 12rem;
-    height: 18rem;
-
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
     }
 }
 
@@ -39,7 +31,7 @@
     position: absolute;
     bottom: 0;
     z-index: 1;
-    height: calc(100% - 1.7rem);
+    height: 100%;
     width: 4rem;
     opacity: 0;
     transition: $transition;

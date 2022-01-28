@@ -1,12 +1,8 @@
-import { useRef } from 'react';
+import { FunctionComponent, useRef } from 'react';
 import { carouselScroll } from 'utils';
 import './carousel.scss';
 
-interface Props {
-    items: String[];
-}
-
-export const Carousel = ({ items }: Props) => {
+export const Carousel: FunctionComponent<any> = ({ children }) => {
     const container = useRef<HTMLDivElement>(null);
 
     return (
@@ -18,11 +14,7 @@ export const Carousel = ({ items }: Props) => {
                 <i className="fas fa-chevron-left"></i>
             </button>
             <div className="carousel-row" ref={container}>
-                {items.map((item, i) => (
-                    <div className="carousel-poster" key={i}>
-                        <img src={item + ''} alt="movie" />
-                    </div>
-                ))}
+                {children}
             </div>
             <button
                 className="carousel-btn right"

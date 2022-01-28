@@ -17,7 +17,7 @@ export class Images {
     }
 }
 
-interface Backdrop {
+export interface Backdrop {
     aspect_ratio?: number;
     height?: number;
     iso_639_1?: null | string;

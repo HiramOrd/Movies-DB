@@ -21,7 +21,7 @@ export class movieRepository implements MovieRepository {
     getImages(movieID: string): Promise<Images> {
         return new Promise((resolve, reject) => {
             tmdbAPI
-                .get(`/movie/${movieID}/images`)
+                .get(`/movie/${movieID}/images?include_image_language=en,null`)
                 .then((response) => resolve(response.data))
                 .catch(reject);
         });

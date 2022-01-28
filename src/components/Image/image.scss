@@ -1,0 +1,5 @@
+@import '/src/styles/globals';
+@import '/src/styles/components/animations';
+.image {
+    @extend .anim-zoom;
+}
