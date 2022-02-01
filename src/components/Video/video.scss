@@ -1,0 +1,46 @@
+@import '/src/styles/globals';
+@import '/src/styles/components/animations';
+
+.video {
+    position: relative;
+
+    .video__icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 5rem;
+        color: color-rgba(text, 0.5);
+        transition: $transition;
+        z-index: 1;
+
+        &:hover {
+            color: color(primary);
+
+            &::after {
+                background: none;
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: color-rgba(background, 0.2);
+            z-index: -1;
+            transition: $transition;
+        }
+    }
+}
+
+.modal__content__video {
+    aspect-ratio: 16 / 9;
+    flex-grow: 1;
+}

@@ -1,5 +1,5 @@
 import { tmdbAPI } from 'constants/configs';
-import { Images, Movie, MovieRepository, ReleaseInfo } from './types';
+import { Images, Movie, MovieRepository, ReleaseInfo, Videos } from './types';
 
 export class movieRepository implements MovieRepository {
     getMovie(movieID: string): Promise<Movie> {
@@ -22,6 +22,14 @@ export class movieRepository implements MovieRepository {
         return new Promise((resolve, reject) => {
             tmdbAPI
                 .get(`/movie/${movieID}/images?include_image_language=en,null`)
+                .then((response) => resolve(response.data))
+                .catch(reject);
+        });
+    }
+    getVideos(movieID: string): Promise<Videos> {
+        return new Promise((resolve, reject) => {
+            tmdbAPI
+                .get(`/movie/${movieID}/videos`)
                 .then((response) => resolve(response.data))
                 .catch(reject);
         });

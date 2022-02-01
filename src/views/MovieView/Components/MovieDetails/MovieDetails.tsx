@@ -61,7 +61,7 @@ export const MovieDetails = ({ movie, poster }: Props) => {
                             Languages
                         </b>
                         {movie.spoken_languages?.map((genre) => (
-                            <p id={genre.name + ''}>{genre.name}</p>
+                            <p key={genre.name + ''}>{genre.name}</p>
                         ))}
                     </div>
                 </div>
@@ -72,7 +72,7 @@ export const MovieDetails = ({ movie, poster }: Props) => {
                             Production Companies
                         </b>
                         {movie.production_companies?.map((genre) => (
-                            <p id={genre.id + ''}>{genre.name}</p>
+                            <p key={genre.id + ''}>{genre.name}</p>
                         ))}
                     </div>
 
@@ -81,7 +81,7 @@ export const MovieDetails = ({ movie, poster }: Props) => {
                             Countries
                         </b>
                         {movie.production_countries?.map((genre) => (
-                            <p id={genre.name + ''}>{genre.name}</p>
+                            <p key={genre.name + ''}>{genre.name}</p>
                         ))}
                     </div>
 

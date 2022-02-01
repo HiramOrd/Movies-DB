@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store';
-import { Carousel, Image, Section } from 'components';
+import { Carousel, Image, Section, Video } from 'components';
 import { fetchImages, fetchMovie } from '_core/movie/middlewares';
 import { MovieBackground, MovieDetails, Overview } from './Components';
 import './movieView.scss';
+import { fetchVideos } from '_core/movie/middlewares/fetchVideos';
 
 interface Props {
     movieID: string;
@@ -12,11 +13,14 @@ interface Props {
 
 export const MovieView = ({ movieID }: Props) => {
     const dispatch = useDispatch();
-    const { movie, images } = useSelector((state: RootState) => state.movie);
+    const { movie, images, videos } = useSelector(
+        (state: RootState) => state.movie
+    );
 
     useEffect(() => {
         dispatch(fetchMovie(movieID));
         dispatch(fetchImages(movieID));
+        dispatch(fetchVideos(movieID));
     }, [dispatch, movieID]);
 
     return (
@@ -28,7 +32,6 @@ export const MovieView = ({ movieID }: Props) => {
                 />
                 <div className="container-first">
                     <Overview movie={movie} />
-
                     <MovieDetails
                         movie={movie}
                         poster={images?.posters?.at(0)}
@@ -39,6 +42,16 @@ export const MovieView = ({ movieID }: Props) => {
                             <Carousel>
                                 {images.backdrops.map((image, i) => (
                                     <Image image={image} key={i} />
+                                ))}
+                            </Carousel>
+                        </Section>
+                    )}
+
+                    {!!videos?.length && (
+                        <Section title="Videos">
+                            <Carousel>
+                                {videos.map((video, i) => (
+                                    <Video video={video} key={i} />
                                 ))}
                             </Carousel>
                         </Section>

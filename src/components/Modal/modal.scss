@@ -1,7 +1,7 @@
 @import '/src/styles/globals';
 @import '/src/styles/components/buttons';
 
-.image-modal {
+.modal {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -13,9 +13,8 @@
     display: flex;
 }
 
-.image-modal__container {
+.modal__container {
     flex-grow: 1;
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,14 +22,13 @@
     padding: $gap-sm;
 }
 
-.image-modal__img {
-    width: 100%;
-    height: auto;
-    max-height: 70vh;
+.modal__content {
+    max-width: 100%;
+    max-height: 70%;
     object-fit: contain;
 }
 
-.image-modal__button {
+.modal__button {
     @extend .btn-outl-primary;
     margin-bottom: $gap-sm;
 }
