@@ -37,7 +37,7 @@ export const MovieDetails = ({ movie, poster }: Props) => {
                     </div>
 
                     <div className="movie-details__multi-sections">
-                        {movie.budget && movie.revenue && (
+                        {!!movie.budget && !!movie.revenue && (
                             <div className="movie-details__multi-sections">
                                 <div className="movie-details__section">
                                     <b className="movie-details__section__title">

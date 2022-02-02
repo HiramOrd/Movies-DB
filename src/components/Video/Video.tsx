@@ -24,7 +24,7 @@ export const Video = ({ video }: Props) => {
 
             <Modal toggle={toggle} visible={visible}>
                 <iframe
-                    src={`http://www.youtube.com/embed/${video.key}`}
+                    src={`https://www.youtube.com/embed/${video.key}`}
                     title={video.id}
                     frameBorder="0"
                     allowFullScreen

@@ -1,9 +1,30 @@
-import { FunctionComponent, useRef } from 'react';
+import { FunctionComponent, useEffect, useRef } from 'react';
 import { carouselScroll } from 'utils';
 import './carousel.scss';
 
-export const Carousel: FunctionComponent<any> = ({ children }) => {
+interface Props {
+    scrollLimit?: any;
+}
+
+export const Carousel: FunctionComponent<Props> = ({
+    children,
+    scrollLimit = null,
+}) => {
     const container = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (container.current && scrollLimit) {
+            container.current.onscroll = (ev) => {
+                scrollLimit(
+                    container.current!.scrollWidth -
+                        container.current!.scrollLeft <=
+                        container.current!.clientWidth + 200
+                );
+            };
+        }
+
+        return () => {};
+    }, []);
 
     return (
         <div className="carousel-container">

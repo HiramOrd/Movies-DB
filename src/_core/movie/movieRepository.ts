@@ -1,5 +1,13 @@
 import { tmdbAPI } from 'constants/configs';
-import { Images, Movie, MovieRepository, ReleaseInfo, Videos } from './types';
+import {
+    Artists,
+    Images,
+    Movie,
+    MovieRepository,
+    ReleaseInfo,
+    Similar,
+    Videos,
+} from './types';
 
 export class movieRepository implements MovieRepository {
     getMovie(movieID: string): Promise<Movie> {
@@ -30,6 +38,24 @@ export class movieRepository implements MovieRepository {
         return new Promise((resolve, reject) => {
             tmdbAPI
                 .get(`/movie/${movieID}/videos`)
+                .then((response) => resolve(response.data))
+                .catch(reject);
+        });
+    }
+
+    getCast(movieID: string): Promise<Artists> {
+        return new Promise((resolve, reject) => {
+            tmdbAPI
+                .get(`/movie/${movieID}/credits`)
+                .then((response) => resolve(response.data))
+                .catch(reject);
+        });
+    }
+
+    getSimilar(movieID: string, page: number): Promise<Similar> {
+        return new Promise((resolve, reject) => {
+            tmdbAPI
+                .get(`/movie/${movieID}/similar?page=${page}`)
                 .then((response) => resolve(response.data))
                 .catch(reject);
         });

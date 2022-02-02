@@ -1,11 +1,18 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store';
-import { Carousel, Image, Section, Video } from 'components';
-import { fetchImages, fetchMovie } from '_core/movie/middlewares';
-import { MovieBackground, MovieDetails, Overview } from './Components';
+import { Carousel, Image, Poster, Section, Video } from 'components';
+import {
+    fetchCast,
+    fetchImages,
+    fetchMovie,
+    fetchSimilar,
+    fetchVideos,
+    updateSimilar,
+} from '_core/movie/middlewares';
+import { Credits, MovieBackground, MovieDetails, Overview } from './Components';
 import './movieView.scss';
-import { fetchVideos } from '_core/movie/middlewares/fetchVideos';
+import { useInfiniteScroll } from 'hooks';
 
 interface Props {
     movieID: string;
@@ -13,15 +20,22 @@ interface Props {
 
 export const MovieView = ({ movieID }: Props) => {
     const dispatch = useDispatch();
-    const { movie, images, videos } = useSelector(
+    const { movie, images, videos, cast, similar } = useSelector(
         (state: RootState) => state.movie
     );
+    const { page, setLimit, isLimit } = useInfiniteScroll(similar);
 
     useEffect(() => {
         dispatch(fetchMovie(movieID));
         dispatch(fetchImages(movieID));
         dispatch(fetchVideos(movieID));
+        dispatch(fetchCast(movieID));
+        dispatch(fetchSimilar(movieID));
     }, [dispatch, movieID]);
+
+    useEffect(() => {
+        if (isLimit) dispatch(updateSimilar(movieID, page));
+    }, [page]);
 
     return (
         movie && (
@@ -56,6 +70,31 @@ export const MovieView = ({ movieID }: Props) => {
                             </Carousel>
                         </Section>
                     )}
+
+                    {!!cast?.length && (
+                        <Section title="Cast">
+                            <Credits cast={cast} />
+                        </Section>
+                    )}
+
+                    <br />
+
+                    {!!similar?.total_results && (
+                        <Section title="Similars">
+                            <Carousel scrollLimit={setLimit}>
+                                {similar?.results?.map((poster, i) => (
+                                    <Poster
+                                        posterPath={poster.poster_path}
+                                        posterID={poster.id}
+                                        key={i}
+                                    />
+                                ))}
+                            </Carousel>
+                        </Section>
+                    )}
+
+                    <br />
+                    <br />
                 </div>
             </div>
         )

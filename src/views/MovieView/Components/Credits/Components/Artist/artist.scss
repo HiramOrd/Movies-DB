@@ -1,0 +1,18 @@
+@import '/src/styles/globals';
+
+.artist {
+    display: flex;
+    align-items: center;
+    gap: $gap-md;
+}
+.artist__image {
+    width: 8rem;
+    height: 8rem;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100%;
+}
+
+.artist__name {
+    font-weight: bold;
+}
