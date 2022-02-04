@@ -23,6 +23,9 @@ const movieSlice = createSlice({
     name: 'movie',
     initialState,
     reducers: {
+        setLoading: (state: MovieState, action: PayloadAction<boolean>) => {
+            state.loading = action.payload;
+        },
         setMovie: (state: MovieState, action: PayloadAction<Movie>) => {
             state.movie = action.payload;
         },
@@ -53,6 +56,7 @@ const movieSlice = createSlice({
 });
 
 export const {
+    setLoading,
     setMovie,
     setImages,
     setVideos,

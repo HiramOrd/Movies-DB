@@ -18,87 +18,86 @@ import { Link, useParams } from 'react-router-dom';
 export const MovieView = () => {
     let { movieID = '' } = useParams<'movieID'>();
     const dispatch = useDispatch();
-    const { movie, images, videos, cast, similar } = useSelector(
+
+    const { loading, movie, images, videos, cast, similar } = useSelector(
         (state: RootState) => state.movie
     );
-    const { page, setLimit, isLimit } = useInfiniteScroll(similar);
+
+    const { page, setPage, setLimit } = useInfiniteScroll(similar);
 
     useEffect(() => {
+        setPage(1);
         dispatch(fetchMovie(movieID));
         dispatch(fetchImages(movieID));
         dispatch(fetchVideos(movieID));
         dispatch(fetchCast(movieID));
         dispatch(fetchSimilar(movieID));
-    }, [dispatch, movieID]);
+    }, [movieID]);
 
     useEffect(() => {
-        if (isLimit) dispatch(updateSimilar(movieID, page));
+        if (page > 1) dispatch(updateSimilar(movieID, page));
     }, [page]);
 
-    return (
-        movie && (
-            <div className="movie-view">
-                <MovieBackground
-                    backdrop_path={movie.backdrop_path}
-                    original_title={movie.original_title}
-                />
-                <div className="container-first">
-                    <Overview movie={movie} />
-                    <MovieDetails
-                        movie={movie}
-                        poster={images?.posters?.at(0)}
-                    />
+    return movie && !loading ? (
+        <div className="movie-view">
+            <MovieBackground
+                backdrop_path={movie.backdrop_path}
+                original_title={movie.original_title}
+            />
 
-                    {images?.backdrops && (
-                        <Section title="Images">
-                            <Carousel>
-                                {images.backdrops.map((image, i) => (
-                                    <Image image={image} key={i} />
-                                ))}
-                            </Carousel>
-                        </Section>
-                    )}
+            <div className="container-first">
+                <Overview movie={movie} />
 
-                    {!!videos?.length && (
-                        <Section title="Videos">
-                            <Carousel>
-                                {videos.map((video, i) => (
-                                    <Video video={video} key={i} />
-                                ))}
-                            </Carousel>
-                        </Section>
-                    )}
+                <MovieDetails movie={movie} poster={images?.posters?.at(0)} />
 
-                    {!!cast?.length && (
-                        <Section title="Cast">
-                            <Credits cast={cast} />
-                        </Section>
-                    )}
+                {images?.backdrops && (
+                    <Section title="Images">
+                        <Carousel id={movieID}>
+                            {images.backdrops.map((image, i) => (
+                                <Image image={image} key={i} />
+                            ))}
+                        </Carousel>
+                    </Section>
+                )}
 
-                    <br />
+                {!!videos?.length && (
+                    <Section title="Videos">
+                        <Carousel id={movieID}>
+                            {videos.map((video, i) => (
+                                <Video video={video} key={i} />
+                            ))}
+                        </Carousel>
+                    </Section>
+                )}
 
-                    {!!similar?.total_results && (
-                        <Section title="Similars">
-                            <Carousel scrollLimit={setLimit}>
-                                {similar?.results?.map((poster, i) => (
-                                    <Link
-                                        to={`/movies/movie/${poster.id}`}
-                                        key={i}
-                                    >
-                                        <Poster
-                                            posterPath={poster.poster_path}
-                                            posterID={poster.id}
-                                        />
-                                    </Link>
-                                ))}
-                            </Carousel>
-                        </Section>
-                    )}
+                {!!cast?.length && (
+                    <Section title="Cast">
+                        <Credits cast={cast} />
+                    </Section>
+                )}
 
-                    <br />
-                    <br />
-                </div>
+                <br />
+
+                {!!similar?.total_results && (
+                    <Section title="Similars">
+                        <Carousel id={movieID} scrollLimit={setLimit}>
+                            {similar?.results?.map((poster, i) => (
+                                <Link to={`/movies/movie/${poster.id}`} key={i}>
+                                    <Poster
+                                        posterPath={poster.poster_path}
+                                        posterID={poster.id}
+                                    />
+                                </Link>
+                            ))}
+                        </Carousel>
+                    </Section>
+                )}
+
+                <br />
+                <br />
             </div>
-        )
+        </div>
+    ) : (
+        <div></div>
     );
 };

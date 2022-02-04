@@ -3,28 +3,32 @@ import { carouselScroll } from 'utils';
 import './carousel.scss';
 
 interface Props {
+    id: string;
     scrollLimit?: any;
 }
 
 export const Carousel: FunctionComponent<Props> = ({
     children,
     scrollLimit = null,
+    id,
 }) => {
     const container = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (container.current && scrollLimit) {
-            container.current.onscroll = (ev) => {
+            container.current.addEventListener('scroll', () =>
                 scrollLimit(
                     container.current!.scrollWidth -
                         container.current!.scrollLeft <=
                         container.current!.clientWidth + 200
-                );
-            };
+                )
+            );
         }
-
-        return () => {};
     }, []);
+
+    useEffect(() => {
+        container!.current!.scrollLeft = 0;
+    }, [id]);
 
     return (
         <div className="carousel-container">
