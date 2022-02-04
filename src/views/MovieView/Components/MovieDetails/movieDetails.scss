@@ -7,6 +7,9 @@
     display: grid;
     gap: $gap-md;
 
+    animation: fadeIn;
+    animation-duration: $anim-speed;
+
     @media screen and (min-width: $media-md) {
         grid-template-columns: 1fr 2fr 2fr;
     }

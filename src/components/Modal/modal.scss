@@ -9,8 +9,10 @@
     height: 100vh;
     overflow-y: auto;
     background-color: color-rgba(background, 0.9);
-    z-index: 5;
+    z-index: 20;
     display: flex;
+    animation: fadeIn;
+    animation-duration: 0.3s;
 }
 
 .modal__container {

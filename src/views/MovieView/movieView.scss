@@ -13,6 +13,9 @@
     top: 0;
     width: 100%;
     height: 100%;
+    animation: fadeIn;
+    animation-duration: $anim-speed;
+
     img {
         width: 100%;
         height: 100%;
@@ -46,6 +49,8 @@
 }
 
 .movie-overview {
+    animation: fadeInLeft;
+    animation-duration: $anim-speed-fast;
     max-width: 40rem;
     margin: 10rem 0;
 }

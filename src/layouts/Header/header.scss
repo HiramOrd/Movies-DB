@@ -13,6 +13,9 @@
     background-color: transparent;
     transition: $transition;
 
+    animation: fadeIn;
+    animation-duration: $anim-speed;
+
     &.scroll {
         background-color: color(background);
     }
