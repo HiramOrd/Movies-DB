@@ -13,12 +13,10 @@ import {
 import { Credits, MovieBackground, MovieDetails, Overview } from './Components';
 import './movieView.scss';
 import { useInfiniteScroll } from 'hooks';
+import { Link, useParams } from 'react-router-dom';
 
-interface Props {
-    movieID: string;
-}
-
-export const MovieView = ({ movieID }: Props) => {
+export const MovieView = () => {
+    let { movieID = '' } = useParams<'movieID'>();
     const dispatch = useDispatch();
     const { movie, images, videos, cast, similar } = useSelector(
         (state: RootState) => state.movie
@@ -83,11 +81,15 @@ export const MovieView = ({ movieID }: Props) => {
                         <Section title="Similars">
                             <Carousel scrollLimit={setLimit}>
                                 {similar?.results?.map((poster, i) => (
-                                    <Poster
-                                        posterPath={poster.poster_path}
-                                        posterID={poster.id}
+                                    <Link
+                                        to={`/movies/movie/${poster.id}`}
                                         key={i}
-                                    />
+                                    >
+                                        <Poster
+                                            posterPath={poster.poster_path}
+                                            posterID={poster.id}
+                                        />
+                                    </Link>
                                 ))}
                             </Carousel>
                         </Section>
