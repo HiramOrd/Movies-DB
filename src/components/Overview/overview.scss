@@ -1,0 +1,43 @@
+@import '/src/styles/globals';
+@import '/src/styles/components/cards';
+
+.overview-page {
+    position: relative;
+    height: 100vh;
+}
+
+.overview {
+    animation: fadeInLeft;
+    animation-duration: $anim-speed-fast;
+    max-width: 40rem;
+    margin: 10rem 0;
+}
+.overview__title {
+    font-size: $text-xl;
+    margin: 0;
+    margin-bottom: $gap-md;
+}
+.overview__genres {
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: $gap-md;
+}
+.overview__info {
+    line-height: 1.6;
+    margin: 0;
+    margin-bottom: $gap-md;
+}
+.overview__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 30rem;
+    font-weight: bold;
+}
+.overview__details__certification {
+    @extend .card-primary;
+}
+.overview__details__likes {
+    color: color(success);
+}

@@ -1,14 +1,16 @@
-interface props {
-    backdrop_path: string | undefined;
-    original_title: string | undefined;
+import './overviewBackground.scss';
+
+interface Props {
+    backdrop_path?: string;
+    original_title?: string;
 }
 
-export const MovieBackground = ({
+export const OverviewBackground = ({
     backdrop_path,
     original_title = 'background',
-}: props) => {
+}: Props) => {
     return (
-        <picture className="movie-background">
+        <picture className="overview-background">
             {backdrop_path && (
                 <img
                     src={`https://image.tmdb.org/t/p/original${backdrop_path}`}

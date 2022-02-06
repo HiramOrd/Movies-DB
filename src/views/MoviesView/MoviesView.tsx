@@ -1,3 +1,5 @@
+import './moviesView.scss';
+
 export const MoviesView = () => {
     return (
         <div>

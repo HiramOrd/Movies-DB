@@ -1,7 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store';
-import { Carousel, Image, Poster, Section, Video } from 'components';
+import {
+    Carousel,
+    Image,
+    Overview,
+    OverviewBackground,
+    Poster,
+    Section,
+    Video,
+} from 'components';
 import {
     fetchCast,
     fetchImages,
@@ -10,8 +18,7 @@ import {
     fetchVideos,
     updateSimilar,
 } from '_core/movie/middlewares';
-import { Credits, MovieBackground, MovieDetails, Overview } from './Components';
-import './movieView.scss';
+import { Credits, MovieDetails } from './Components';
 import { useInfiniteScroll } from 'hooks';
 import { Link, useParams } from 'react-router-dom';
 
@@ -39,14 +46,21 @@ export const MovieView = () => {
     }, [page]);
 
     return movie && !loading ? (
-        <div className="movie-view">
-            <MovieBackground
+        <div className="overview-page">
+            <OverviewBackground
                 backdrop_path={movie.backdrop_path}
                 original_title={movie.original_title}
             />
 
             <div className="container-first">
-                <Overview movie={movie} />
+                <Overview
+                    certification={movie.certification}
+                    genres={movie.genres}
+                    overview={movie.overview}
+                    runtime={movie.runtime}
+                    title={movie.title}
+                    vote_average={movie.vote_average}
+                />
 
                 <MovieDetails movie={movie} poster={images?.posters?.at(0)} />
 
