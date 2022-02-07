@@ -1,12 +1,7 @@
-import { MovieRepository, Similar } from '../types';
+import { MovieUseCase } from '.';
+import { Similar } from '../types';
 
-export class GetSimilarUseCase {
-    repository: MovieRepository;
-
-    constructor(repository: MovieRepository) {
-        this.repository = repository;
-    }
-
+export class GetSimilarUseCase extends MovieUseCase {
     run(movieID: string, page: number = 1): Promise<Similar> {
         return this.repository.getSimilar(movieID, page);
     }

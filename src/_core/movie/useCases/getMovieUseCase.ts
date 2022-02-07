@@ -1,12 +1,7 @@
-import { Movie, MovieRepository } from '../types';
+import { MovieUseCase } from '.';
+import { Movie } from '../types';
 
-export class GetMovieUseCase {
-    repository: MovieRepository;
-
-    constructor(repository: MovieRepository) {
-        this.repository = repository;
-    }
-
+export class GetMovieUseCase extends MovieUseCase {
     async run(movieID: string): Promise<Movie> {
         try {
             let movie = await this.repository.getMovie(movieID);
