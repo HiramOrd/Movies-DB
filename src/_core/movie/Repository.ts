@@ -52,7 +52,7 @@ export class Repository implements RepositoryInterface {
         });
     }
 
-    getSimilar(movieID: string, page: number): Promise<SimilarsResponse> {
+    getSimilar(movieID: string, page: number = 1): Promise<SimilarsResponse> {
         return new Promise((resolve, reject) => {
             tmdbAPI
                 .get(`/movie/${movieID}/similar?page=${page}`)

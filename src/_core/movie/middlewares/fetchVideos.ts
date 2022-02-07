@@ -1,13 +1,12 @@
 import { Dispatch } from '@reduxjs/toolkit';
 import { setVideos } from '_core/movie/movieReducer';
-import { Factory } from '_core/movie/Factory';
-import { GetVideosUseCase } from '_core/movie/useCases';
+import { FactoryRepository } from '_core/movie/Factory';
 
 export const fetchVideos = (movieID: string) => async (dispatch: Dispatch) => {
     try {
-        const getVideos = Factory.build(GetVideosUseCase);
-        const videos = await getVideos.run(movieID);
-        dispatch(setVideos(videos));
+        const repository = FactoryRepository.build();
+        const videos = await repository.getVideos(movieID);
+        dispatch(setVideos(videos.results || []));
     } catch (error) {
         console.warn(error);
     }

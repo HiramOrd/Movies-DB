@@ -6,8 +6,8 @@ import { GetMovieUseCase } from '_core/movie/useCases';
 export const fetchMovie = (movieID: string) => async (dispatch: Dispatch) => {
     dispatch(setLoading(true));
     try {
-        const getMovie = Factory.build(GetMovieUseCase);
-        const movie = await getMovie.run(movieID);
+        const GetMovie = Factory.build(GetMovieUseCase);
+        const movie = await GetMovie.run(movieID);
         dispatch(setMovie(movie));
     } catch (error) {
         console.warn(error);

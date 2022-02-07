@@ -8,7 +8,7 @@ export interface Repository {
     getMovie(movieID: string): Promise<Movie>;
     getImages(movieID: string): Promise<ImagesResponse>;
     getCast(movieID: string): Promise<CreditsResponse>;
-    getSimilar(movieID: string, page: number): Promise<SimilarsResponse>;
+    getSimilar(movieID: string, page?: number): Promise<SimilarsResponse>;
 }
 
 export interface ImagesResponse {

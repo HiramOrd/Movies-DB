@@ -7,3 +7,9 @@ export class Factory {
         return new useCase(repository);
     }
 }
+
+export class FactoryRepository {
+    static build(): RepositoryInterface {
+        return new Repository();
+    }
+}
