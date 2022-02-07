@@ -1,7 +1,7 @@
 import { Artist, Image, Video } from '_core/_shared/types';
 import { Movie, Poster, ReleaseSummary } from '.';
 
-export interface MovieRepository {
+export interface Repository {
     getReleaseInfo(movieID: string): Promise<ReleaseInfoResponse>;
     getVideos(movieID: string): Promise<VideosResponse>;
 

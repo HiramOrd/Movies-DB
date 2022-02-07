@@ -3,13 +3,13 @@ import {
     CreditsResponse,
     ImagesResponse,
     Movie,
-    MovieRepository as MovieRepositoryInterface,
+    Repository as RepositoryInterface,
     ReleaseInfoResponse,
     SimilarsResponse,
     VideosResponse,
 } from './types';
 
-export class MovieRepository implements MovieRepositoryInterface {
+export class Repository implements RepositoryInterface {
     getMovie(movieID: string): Promise<Movie> {
         return new Promise((resolve, reject) => {
             tmdbAPI

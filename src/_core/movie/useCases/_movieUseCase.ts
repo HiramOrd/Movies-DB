@@ -1,9 +1,9 @@
-import { MovieRepository } from '../types';
+import { Repository } from '../types';
 
 export class MovieUseCase {
-    repository: MovieRepository;
+    repository: Repository;
 
-    constructor(repository: MovieRepository) {
+    constructor(repository: Repository) {
         this.repository = repository;
     }
 }
