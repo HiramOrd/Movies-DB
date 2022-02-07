@@ -1,6 +1,6 @@
 import { Modal } from 'components';
 import { useModal } from 'hooks';
-import { Video as Vid } from '_core/movie/types';
+import { Video as Vid } from '_core/_shared/types';
 import './video.scss';
 
 interface Props {

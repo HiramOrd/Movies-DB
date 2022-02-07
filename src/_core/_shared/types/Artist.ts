@@ -1,16 +1,4 @@
-export class Credits {
-    id?: number;
-    cast?: Cast[];
-    crew?: Cast[];
-
-    constructor ( id?: number, cast?: Cast[], crew?: Cast[] ) {
-        this.id = id;
-        this.cast = cast;
-        this.crew = crew;
-    }
-}
-
-interface Cast {
+export interface Artist {
     adult?: boolean;
     gender?: number;
     id?: number;

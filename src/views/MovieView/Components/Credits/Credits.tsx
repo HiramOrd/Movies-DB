@@ -1,5 +1,5 @@
 import { useModal } from 'hooks';
-import { Artist as ArtistType } from '_core/movie/types';
+import { Artist as ArtistType } from '_core/_shared/types';
 import { Artist } from './Components';
 import './credits.scss';
 interface Props {

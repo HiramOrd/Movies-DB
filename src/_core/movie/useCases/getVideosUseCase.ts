@@ -1,5 +1,5 @@
+import { Video } from '_core/_shared/types';
 import { MovieUseCase } from '.';
-import { Video } from '../types';
 
 export class GetVideosUseCase extends MovieUseCase {
     async run(movieID: string): Promise<Video[]> {

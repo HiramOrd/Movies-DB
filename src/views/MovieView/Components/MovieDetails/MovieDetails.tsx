@@ -1,11 +1,12 @@
 import { Section } from 'components';
 import { currencyFormat } from 'utils';
-import { Backdrop, Movie } from '_core/movie/types';
+import { Movie } from '_core/movie/types';
+import { Image } from '_core/_shared/types';
 import './movieDetails.scss';
 
 interface Props {
     movie: Movie;
-    poster: Backdrop | undefined;
+    poster?: Image;
 }
 
 export const MovieDetails = ({ movie, poster }: Props) => {

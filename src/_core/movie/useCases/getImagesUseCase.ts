@@ -1,8 +1,8 @@
 import { MovieUseCase } from '.';
-import { Images } from '../types';
+import { ImagesResponse } from '../types';
 
 export class GetImagesUseCase extends MovieUseCase {
-    run(movieID: string): Promise<Images> {
+    run(movieID: string): Promise<ImagesResponse> {
         return this.repository.getImages(movieID);
     }
 }

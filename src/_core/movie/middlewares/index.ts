@@ -3,3 +3,4 @@ export * from './fetchImages';
 export * from './fetchMovie';
 export * from './fetchSimilar';
 export * from './fetchVideos';
+export * from './updateSimilar';

@@ -1,5 +1,5 @@
+import { Artist } from '_core/_shared/types';
 import { MovieUseCase } from '.';
-import { Artist } from '../types';
 
 export class GetCastUseCase extends MovieUseCase {
     async run(movieID: string): Promise<Artist[]> {

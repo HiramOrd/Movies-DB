@@ -1,10 +1,10 @@
 import { Modal } from 'components';
 import { useModal } from 'hooks';
-import { Backdrop } from '_core/movie/types';
+import { Image as ImageInterface } from '_core/_shared/types';
 import './image.scss';
 
 interface Props {
-    image?: Backdrop;
+    image?: ImageInterface;
 }
 
 export const Image = ({ image }: Props) => {

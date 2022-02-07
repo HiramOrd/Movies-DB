@@ -1,19 +1,9 @@
-export class ReleaseInfo {
-    id?: number;
-    results?: Result[];
-
-    constructor(id: number, results: Result[]) {
-        this.id = id;
-        this.results = results;
-    }
-}
-
-interface Result {
+export interface ReleaseSummary {
     iso_3166_1?: string;
     release_dates?: ReleaseDate[];
 }
 
-interface ReleaseDate {
+export interface ReleaseDate {
     certification?: string;
     iso_639_1?: null | string;
     note?: string;

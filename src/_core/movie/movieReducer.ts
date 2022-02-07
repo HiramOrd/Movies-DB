@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Movie, Images, Video, Artist, Similar } from '_core/movie/types';
+import { Movie, ImagesResponse, SimilarsResponse } from '_core/movie/types';
+import { Artist, Video } from '_core/_shared/types';
 
 interface MovieState {
     movie: Movie | null;
-    images: Images | null;
+    images: ImagesResponse | null;
     videos: Video[] | null;
     cast: Artist[] | null;
-    similar: Similar | null;
+    similar: SimilarsResponse | null;
     loading: boolean;
 }
 
@@ -29,7 +30,10 @@ const movieSlice = createSlice({
         setMovie: (state: MovieState, action: PayloadAction<Movie>) => {
             state.movie = action.payload;
         },
-        setImages: (state: MovieState, action: PayloadAction<Images>) => {
+        setImages: (
+            state: MovieState,
+            action: PayloadAction<ImagesResponse>
+        ) => {
             state.images = action.payload;
         },
         setVideos: (state: MovieState, action: PayloadAction<Video[]>) => {
@@ -38,11 +42,17 @@ const movieSlice = createSlice({
         setCast: (state: MovieState, action: PayloadAction<Artist[]>) => {
             state.cast = action.payload;
         },
-        setSimilar: (state: MovieState, action: PayloadAction<Similar>) => {
+        setSimilar: (
+            state: MovieState,
+            action: PayloadAction<SimilarsResponse>
+        ) => {
             state.similar = action.payload;
         },
 
-        updateSimilar: (state: MovieState, action: PayloadAction<Similar>) => {
+        updateSimilar: (
+            state: MovieState,
+            action: PayloadAction<SimilarsResponse>
+        ) => {
             state.similar = {
                 ...state.similar,
                 results: [

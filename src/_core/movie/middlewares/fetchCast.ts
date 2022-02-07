@@ -1,5 +1,5 @@
 import { Dispatch } from '@reduxjs/toolkit';
-import { MovieFactory } from '../movieFactory';
+import { MovieFactory } from '../MovieFactory';
 import { setCast } from '../movieReducer';
 import { GetCastUseCase } from '../useCases';
 

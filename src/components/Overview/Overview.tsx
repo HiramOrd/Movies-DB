@@ -1,5 +1,5 @@
 import { transformRunTime } from 'utils';
-import { Genre } from '_core/movie/types';
+import { Genre } from '_core/_shared/types';
 import './overview.scss';
 
 interface Props {

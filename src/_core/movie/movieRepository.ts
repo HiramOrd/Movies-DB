@@ -1,15 +1,15 @@
 import { tmdbAPI } from 'constants/configs';
 import {
-    Artists,
-    Images,
+    CreditsResponse,
+    ImagesResponse,
     Movie,
-    MovieRepository,
-    ReleaseInfo,
-    Similar,
-    Videos,
+    MovieRepository as MovieRepositoryInterface,
+    ReleaseInfoResponse,
+    SimilarsResponse,
+    VideosResponse,
 } from './types';
 
-export class movieRepository implements MovieRepository {
+export class MovieRepository implements MovieRepositoryInterface {
     getMovie(movieID: string): Promise<Movie> {
         return new Promise((resolve, reject) => {
             tmdbAPI
@@ -18,7 +18,7 @@ export class movieRepository implements MovieRepository {
                 .catch(reject);
         });
     }
-    getReleaseInfo(movieID: string): Promise<ReleaseInfo> {
+    getReleaseInfo(movieID: string): Promise<ReleaseInfoResponse> {
         return new Promise((resolve, reject) => {
             tmdbAPI
                 .get(`/movie/${movieID}/release_dates`)
@@ -26,7 +26,7 @@ export class movieRepository implements MovieRepository {
                 .catch(reject);
         });
     }
-    getImages(movieID: string): Promise<Images> {
+    getImages(movieID: string): Promise<ImagesResponse> {
         return new Promise((resolve, reject) => {
             tmdbAPI
                 .get(`/movie/${movieID}/images?include_image_language=en,null`)
@@ -34,7 +34,7 @@ export class movieRepository implements MovieRepository {
                 .catch(reject);
         });
     }
-    getVideos(movieID: string): Promise<Videos> {
+    getVideos(movieID: string): Promise<VideosResponse> {
         return new Promise((resolve, reject) => {
             tmdbAPI
                 .get(`/movie/${movieID}/videos`)
@@ -43,7 +43,7 @@ export class movieRepository implements MovieRepository {
         });
     }
 
-    getCast(movieID: string): Promise<Artists> {
+    getCast(movieID: string): Promise<CreditsResponse> {
         return new Promise((resolve, reject) => {
             tmdbAPI
                 .get(`/movie/${movieID}/credits`)
@@ -52,7 +52,7 @@ export class movieRepository implements MovieRepository {
         });
     }
 
-    getSimilar(movieID: string, page: number): Promise<Similar> {
+    getSimilar(movieID: string, page: number): Promise<SimilarsResponse> {
         return new Promise((resolve, reject) => {
             tmdbAPI
                 .get(`/movie/${movieID}/similar?page=${page}`)

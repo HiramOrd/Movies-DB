@@ -1,6 +1,6 @@
 import { Dispatch } from '@reduxjs/toolkit';
 import { setVideos } from '_core/movie/movieReducer';
-import { MovieFactory } from '_core/movie/movieFactory';
+import { MovieFactory } from '_core/movie/MovieFactory';
 import { GetVideosUseCase } from '_core/movie/useCases';
 
 export const fetchVideos = (movieID: string) => async (dispatch: Dispatch) => {

@@ -1,9 +1,11 @@
-import { movieRepository } from './movieRepository';
-import { MovieRepository } from './types';
+import { MovieRepository } from './MovieRepository';
+import { MovieRepository as MovieRepositoryInterface } from './types';
 
 export class MovieFactory {
-    static build<T>(useCase: new (movieRepository: MovieRepository) => T) {
-        const repository = new movieRepository();
+    static build<T>(
+        useCase: new (movieRepository: MovieRepositoryInterface) => T
+    ) {
+        const repository = new MovieRepository();
         return new useCase(repository);
     }
 }
