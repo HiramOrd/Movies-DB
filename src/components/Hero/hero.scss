@@ -1,0 +1,36 @@
+@import '/src/styles/globals';
+@import '/src/styles/components/inputs';
+@import '/src/styles/components/containers';
+
+.hero {
+    @extend .container-first;
+    min-height: 50vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero__section {
+    flex-grow: 1;
+    padding-top: $gap-xl;
+    padding-bottom: $gap-xl;
+
+    .hero__title,
+    .hero__sub {
+        font-weight: 300;
+    }
+    .hero__title {
+        font-size: $text-xl;
+        margin-bottom: $gap-xs;
+    }
+    .hero__sub {
+        font-size: $text-md;
+        margin-bottom: $gap-xl;
+    }
+
+    .seeker {
+        max-width: 80rem;
+        width: 100%;
+    }
+}

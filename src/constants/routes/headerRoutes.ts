@@ -3,10 +3,10 @@ import { HeaderRoutes } from 'types';
 export const headerRoutes: HeaderRoutes[] = [
     {
         name: 'Movies',
-        route: '#',
+        route: '/movies',
     },
     {
         name: 'Tv Shows',
-        route: '#',
+        route: '/',
     },
 ];

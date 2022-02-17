@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { HeaderRoutes } from 'types';
 import { RightSection } from './RightSection';
 
@@ -8,20 +9,18 @@ export const NavbarDesktop = ({ routes }: Props) => {
     return (
         <div className="header__desktop">
             <div className="header__desktop__menu">
-                <img
-                    className="header__desktop__option"
-                    src="/assets/logo.png"
-                    alt="logo"
-                    height={40}
-                />
+                <NavLink to="/" className="header__desktop__option">
+                    <img src="/assets/logo.png" alt="logo" height={40} />
+                </NavLink>
                 <div>
                     {routes.map((route) => (
-                        <div
+                        <NavLink
+                            to={route.route}
                             className="header__desktop__option"
                             key={route.name}
                         >
                             {route.name}
-                        </div>
+                        </NavLink>
                     ))}
                 </div>
             </div>

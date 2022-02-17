@@ -6,3 +6,4 @@ export * from './Overview/Overview';
 export * from './Poster/Poster';
 export * from './Section/Section';
 export * from './Video/Video';
+export * from './Hero/Hero';
