@@ -7,6 +7,8 @@ export const headerRoutes: HeaderRoutes[] = [
     },
     {
         name: 'Tv Shows',
-        route: '/',
+        route: '/tvshows',
     },
 ];
+
+export const searchExpludes: string[] = ['/movies', '/tvshows'];

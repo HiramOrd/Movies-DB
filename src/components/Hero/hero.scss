@@ -1,9 +1,7 @@
 @import '/src/styles/globals';
 @import '/src/styles/components/inputs';
-@import '/src/styles/components/containers';
 
 .hero {
-    @extend .container-first;
     min-height: 50vh;
     text-align: center;
     display: flex;

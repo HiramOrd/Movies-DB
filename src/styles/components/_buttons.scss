@@ -1,4 +1,4 @@
-@import 'animations';
+@import '/src/styles/components/animations';
 
 .btn-link {
     color: color(primary);
@@ -27,4 +27,13 @@
 .btn-link-none {
     text-decoration: none;
     color: color(text);
+}
+
+.btn-transparent {
+    @extend .anim-blur;
+    @extend .anim-zoom;
+    font-size: $text-md;
+    font-weight: 300;
+    padding: $gap-xs $gap-xl;
+    cursor: pointer;
 }

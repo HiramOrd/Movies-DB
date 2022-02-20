@@ -6,9 +6,39 @@
 .anim-zoom {
     @extend .anim;
     &:hover {
-        transform: scale(1.1);
+        transform: scale(0.9);
     }
     &:active {
+        transform: scale(0.8);
+    }
+}
+
+.anim-zoom-1 {
+    @extend .anim;
+    &:hover {
         transform: scale(0.9);
+    }
+    &:active {
+        transform: scale(0.8);
+    }
+}
+
+.anim-blur {
+    backdrop-filter: blur(5px);
+    background-color: color-rgba(text, 0.1);
+    color: color(text);
+    border-radius: $radius;
+    border-style: none;
+    transition: $transition;
+    outline: none;
+
+    &::placeholder {
+        color: color-rgba(text, 0.5);
+    }
+
+    &:focus,
+    &:hover {
+        background-color: color-rgba(text, 0.2);
+        backdrop-filter: blur(10px);
     }
 }
