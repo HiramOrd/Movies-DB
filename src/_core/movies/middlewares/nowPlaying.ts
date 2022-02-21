@@ -1,4 +1,5 @@
 import { Dispatch } from '@reduxjs/toolkit';
+import { ScrollController } from 'hooks';
 import { FactoryRepository } from '../Factory';
 import { setNowPlaying, updateNowPlaying as update } from '../moviesReducer';
 
@@ -22,3 +23,5 @@ export const updateNowPlaying =
             console.warn(error);
         }
     };
+
+export const nowPlayingController = new ScrollController(updateNowPlaying);

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store';
 import {
@@ -19,7 +19,7 @@ import {
     updateSimilar,
 } from '_core/movie/middlewares';
 import { Credits, MovieDetails } from './Components';
-import { useInfiniteScroll } from 'hooks';
+import { ScrollIdController, useInfiniteScroll } from 'hooks';
 import { Link, useParams } from 'react-router-dom';
 
 export const MovieView = () => {
@@ -30,20 +30,20 @@ export const MovieView = () => {
         (state: RootState) => state.movie
     );
 
-    const [page, setPage, setLimit] = useInfiniteScroll(similar);
+    const similarController = useMemo(
+        () => new ScrollIdController(updateSimilar, movieID),
+        []
+    );
+
+    const [setLimit] = useInfiniteScroll(similar, similarController);
 
     useEffect(() => {
-        setPage(1);
         dispatch(fetchMovie(movieID));
         dispatch(fetchImages(movieID));
         dispatch(fetchVideos(movieID));
         dispatch(fetchCast(movieID));
         dispatch(fetchSimilar(movieID));
     }, [movieID]);
-
-    useEffect(() => {
-        if (page > 1) dispatch(updateSimilar(movieID, page));
-    }, [page]);
 
     return movie && !loading ? (
         <div className="overview-page">
@@ -96,7 +96,10 @@ export const MovieView = () => {
                     <Section title="Similars">
                         <Carousel id={movieID} scrollLimit={setLimit}>
                             {similar?.results?.map((poster, i) => (
-                                <Link to={`/movies/movie/${poster.id}`} key={i}>
+                                <Link
+                                    to={`/movies/movie/${poster.id}`}
+                                    key={`${poster.id}${i}`}
+                                >
                                     <Poster
                                         posterPath={poster.poster_path}
                                         posterID={poster.id}

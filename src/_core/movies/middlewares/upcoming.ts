@@ -1,4 +1,5 @@
 import { Dispatch } from '@reduxjs/toolkit';
+import { ScrollController } from 'hooks';
 import { FactoryRepository } from '../Factory';
 import { setUpcoming, updateUpcoming as update } from '../moviesReducer';
 
@@ -21,3 +22,5 @@ export const updateUpcoming = (page: number) => async (dispatch: Dispatch) => {
         console.warn(error);
     }
 };
+
+export const upcomingController = new ScrollController(updateUpcoming);

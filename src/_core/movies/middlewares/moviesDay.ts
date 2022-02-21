@@ -1,4 +1,5 @@
 import { Dispatch } from '@reduxjs/toolkit';
+import { ScrollController } from 'hooks';
 import { FactoryRepository } from '../Factory';
 import { setMoviesDay, updateMoviesDay as update } from '../moviesReducer';
 
@@ -21,3 +22,5 @@ export const updateMoviesDay = (page: number) => async (dispatch: Dispatch) => {
         console.warn(error);
     }
 };
+
+export const moviesDayController = new ScrollController(updateMoviesDay);
