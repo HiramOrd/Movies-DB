@@ -12,5 +12,5 @@ export const useInfiniteScroll = (content: any) => {
         }
     }, [isLimit]);
 
-    return { isLimit, setLimit, page, setPage };
+    return [page, setPage, setLimit, isLimit] as const;
 };

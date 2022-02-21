@@ -30,7 +30,7 @@ export const MovieView = () => {
         (state: RootState) => state.movie
     );
 
-    const { page, setPage, setLimit } = useInfiniteScroll(similar);
+    const [page, setPage, setLimit] = useInfiniteScroll(similar);
 
     useEffect(() => {
         setPage(1);

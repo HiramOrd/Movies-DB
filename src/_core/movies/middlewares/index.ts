@@ -1,3 +1,2 @@
-export * from './fetchGenres';
-export * from './fetchMoviesDay';
-export * from './updateMovieDay';
+export * from './genres';
+export * from './moviesDay';

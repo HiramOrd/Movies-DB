@@ -15,25 +15,57 @@ import {
     fetchMoviesDay,
     updateMoviesDay,
 } from '_core/movies/middlewares';
+import {
+    fetchNowPlaying,
+    updateNowPlaying,
+} from '_core/movies/middlewares/nowPlaying';
+import {
+    fetchTopRated,
+    updateTopRated,
+} from '_core/movies/middlewares/topRated';
+import {
+    fetchUpcoming,
+    updateUpcoming,
+} from '_core/movies/middlewares/upcoming';
 import './moviesView.scss';
 
 export const MoviesView = () => {
     const dispatch = useDispatch();
-    const { loading, moviesDay, genres } = useSelector(
-        (state: RootState) => state.movies
-    );
+    const { loading, moviesDay, nowPlaying, topRated, upcoming, genres } =
+        useSelector((state: RootState) => state.movies);
 
-    const { page, setPage, setLimit } = useInfiniteScroll(moviesDay);
+    const [pageMD, setPageMD, setLimitMD] = useInfiniteScroll(moviesDay);
+    const [pageNP, setPageNP, setLimitNP] = useInfiniteScroll(nowPlaying);
+    const [pageTR, setPageTR, setLimitTR] = useInfiniteScroll(topRated);
+    const [pageU, setPageU, setLimitU] = useInfiniteScroll(upcoming);
 
     useEffect(() => {
-        setPage(1);
+        setPageMD(1);
+        setPageNP(1);
+        setPageTR(1);
+        setPageU(1);
         dispatch(fetchMoviesDay());
+        dispatch(fetchTopRated());
+        dispatch(fetchNowPlaying());
+        dispatch(fetchUpcoming());
         dispatch(fetchGenres());
     }, []);
 
     useEffect(() => {
-        if (page > 1) dispatch(updateMoviesDay(page));
-    }, [page]);
+        if (pageMD > 1) dispatch(updateMoviesDay(pageMD));
+    }, [pageMD]);
+
+    useEffect(() => {
+        if (pageNP > 1) dispatch(updateNowPlaying(pageNP));
+    }, [pageNP]);
+
+    useEffect(() => {
+        if (pageTR > 1) dispatch(updateTopRated(pageTR));
+    }, [pageTR]);
+
+    useEffect(() => {
+        if (pageU > 1) dispatch(updateUpcoming(pageU));
+    }, [pageU]);
 
     return (
         <>
@@ -59,9 +91,60 @@ export const MoviesView = () => {
                 </div>
 
                 <Section title="Trending Today">
-                    <Carousel id="moviesDay" scrollLimit={setLimit}>
+                    <Carousel id="moviesDay" scrollLimit={setLimitMD}>
                         {moviesDay &&
                             moviesDay.results!.map((movie) => (
+                                <Link
+                                    to={`/movies/movie/${movie.id}`}
+                                    key={movie.id}
+                                >
+                                    <Poster
+                                        posterID={movie.id}
+                                        posterPath={movie.poster_path}
+                                    />
+                                </Link>
+                            ))}
+                    </Carousel>
+                </Section>
+
+                <Section title="Top Rated">
+                    <Carousel id="topRated" scrollLimit={setLimitTR}>
+                        {topRated &&
+                            topRated.results!.map((movie) => (
+                                <Link
+                                    to={`/movies/movie/${movie.id}`}
+                                    key={movie.id}
+                                >
+                                    <Poster
+                                        posterID={movie.id}
+                                        posterPath={movie.poster_path}
+                                    />
+                                </Link>
+                            ))}
+                    </Carousel>
+                </Section>
+
+                <Section title="Now Playing">
+                    <Carousel id="nowPlaying" scrollLimit={setLimitNP}>
+                        {nowPlaying &&
+                            nowPlaying.results!.map((movie) => (
+                                <Link
+                                    to={`/movies/movie/${movie.id}`}
+                                    key={movie.id}
+                                >
+                                    <Poster
+                                        posterID={movie.id}
+                                        posterPath={movie.poster_path}
+                                    />
+                                </Link>
+                            ))}
+                    </Carousel>
+                </Section>
+
+                <Section title="Upcoming">
+                    <Carousel id="upcoming" scrollLimit={setLimitU}>
+                        {upcoming &&
+                            upcoming.results!.map((movie) => (
                                 <Link
                                     to={`/movies/movie/${movie.id}`}
                                     key={movie.id}

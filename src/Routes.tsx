@@ -1,13 +1,13 @@
 import { Navigate, RouteObject } from 'react-router-dom';
 import { Layout } from 'layouts/Layout';
-import { HomeView, MoviesView, MovieView } from 'views';
+import { MoviesView, MovieView } from 'views';
 
 export const routes: RouteObject[] = [
     {
         path: '',
         element: <Layout />,
         children: [
-            { index: true, element: <HomeView /> },
+            { index: true, element: <Navigate to="movies" /> },
             {
                 path: 'movies',
                 children: [
@@ -16,7 +16,7 @@ export const routes: RouteObject[] = [
                     { path: '*', element: <Navigate to="" /> },
                 ],
             },
-            { path: '*', element: <Navigate to="" /> },
+            { path: '*', element: <Navigate to="movies" /> },
         ],
     },
 ];
