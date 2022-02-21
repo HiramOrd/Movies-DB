@@ -21,6 +21,7 @@ import {
 import { Credits, MovieDetails } from './Components';
 import { ScrollIdController, useInfiniteScroll } from 'hooks';
 import { Link, useParams } from 'react-router-dom';
+import { ROUTES } from 'constants/routes';
 
 export const MovieView = () => {
     let { movieID = '' } = useParams<'movieID'>();
@@ -97,7 +98,7 @@ export const MovieView = () => {
                         <Carousel id={movieID} scrollLimit={setLimit}>
                             {similar?.results?.map((poster, i) => (
                                 <Link
-                                    to={`/movies/movie/${poster.id}`}
+                                    to={`${ROUTES.movie}${poster.id}`}
                                     key={`${poster.id}${i}`}
                                 >
                                     <Poster

@@ -1,2 +1,2 @@
 export * from './_movieUseCase';
-export * from './GetMovieUseCase';
+export * from './getMovieUseCase';
