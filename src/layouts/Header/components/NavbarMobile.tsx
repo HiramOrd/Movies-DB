@@ -17,13 +17,6 @@ export const NavbarMobile = ({ routes }: Props) => {
                     <i className="fas fa-times"></i>
                 </div>
                 <div className="header__mobile__options">
-                    <NavLink
-                        to="/"
-                        className="header__mobile__option"
-                        onClick={toggleMenu}
-                    >
-                        Home
-                    </NavLink>
                     {routes.map((route) => (
                         <NavLink
                             to={route.route}

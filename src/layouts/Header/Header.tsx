@@ -1,7 +1,7 @@
 import { NavbarDesktop, NavbarMobile } from './components';
 import { useHeader } from 'hooks';
-import { headerRoutes } from 'constants/routes/headerRoutes';
 import './header.scss';
+import { headerRoutes } from 'constants/routes';
 
 export const Header = () => {
     const onTop = useHeader();

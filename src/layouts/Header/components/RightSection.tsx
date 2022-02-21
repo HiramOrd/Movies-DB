@@ -1,4 +1,4 @@
-import { searchExpludes } from 'constants/routes/headerRoutes';
+import { searchExpludes } from 'constants/routes';
 import { useLocation } from 'react-router-dom';
 
 export const RightSection = () => {

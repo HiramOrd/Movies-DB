@@ -24,6 +24,7 @@ import { Link } from 'react-router-dom';
 import { RootState } from 'store';
 
 import './moviesView.scss';
+import { ROUTES } from 'constants/routes';
 
 export const MoviesView = () => {
     const dispatch = useDispatch();
@@ -72,7 +73,7 @@ export const MoviesView = () => {
                         {moviesDay &&
                             moviesDay.results!.map((movie, i) => (
                                 <Link
-                                    to={`/movies/movie/${movie.id}`}
+                                    to={`${ROUTES.movie}${movie.id}`}
                                     key={`${movie.id}${i}`}
                                 >
                                     <Poster
@@ -91,7 +92,7 @@ export const MoviesView = () => {
                         {topRated &&
                             topRated.results!.map((movie, i) => (
                                 <Link
-                                    to={`/movies/movie/${movie.id}`}
+                                    to={`${ROUTES.movie}${movie.id}`}
                                     key={`${movie.id}${i}`}
                                 >
                                     <Poster
@@ -110,7 +111,7 @@ export const MoviesView = () => {
                         {nowPlaying &&
                             nowPlaying.results!.map((movie, i) => (
                                 <Link
-                                    to={`/movies/movie/${movie.id}`}
+                                    to={`${ROUTES.movie}${movie.id}`}
                                     key={`${movie.id}${i}`}
                                 >
                                     <Poster
@@ -129,7 +130,7 @@ export const MoviesView = () => {
                         {upcoming &&
                             upcoming.results!.map((movie, i) => (
                                 <Link
-                                    to={`/movies/movie/${movie.id}`}
+                                    to={`${ROUTES.movie}${movie.id}`}
                                     key={`${movie.id}${i}`}
                                 >
                                     <Poster
