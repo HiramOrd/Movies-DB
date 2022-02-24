@@ -2,7 +2,6 @@
 @import '/src/styles/components/inputs';
 
 .hero {
-    min-height: 50vh;
     text-align: center;
     display: flex;
     align-items: center;
@@ -14,12 +13,9 @@
     padding-top: $gap-xl;
     padding-bottom: $gap-xl;
 
-    .hero__title,
-    .hero__sub {
-        font-weight: 300;
-    }
     .hero__title {
-        font-size: $text-xl;
+        font-weight: 500;
+        font-size: 8rem;
         margin-bottom: $gap-xs;
     }
     .hero__sub {

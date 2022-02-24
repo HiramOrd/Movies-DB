@@ -1,0 +1,9 @@
+@import '/src/styles/globals';
+
+.poster-img {
+    height: 180px;
+
+    @media (min-width: $media-md) {
+        height: 300px;
+    }
+}

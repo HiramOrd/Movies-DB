@@ -55,17 +55,15 @@ export const MoviesView = () => {
                 <Hero />
 
                 <div className="movies__genres">
-                    <Carousel id="genres">
-                        {genres &&
-                            genres.map((category) => (
-                                <button
-                                    className="btn-transparent"
-                                    key={category.id}
-                                >
-                                    {category.name}
-                                </button>
-                            ))}
-                    </Carousel>
+                    {genres &&
+                        genres.map((category) => (
+                            <button
+                                className="btn-transparent"
+                                key={category.id}
+                            >
+                                {category.name}
+                            </button>
+                        ))}
                 </div>
 
                 <Section title="Trending Today">

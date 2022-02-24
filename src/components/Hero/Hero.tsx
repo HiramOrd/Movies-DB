@@ -9,7 +9,6 @@ export const Hero = () => {
                     Find your favorite movie among millions on the web. Explore
                     now.
                 </p>
-                <input type="search" placeholder="Search" className="seeker" />
             </div>
         </div>
     );

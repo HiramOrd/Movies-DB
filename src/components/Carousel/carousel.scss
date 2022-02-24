@@ -12,6 +12,10 @@
         width: 4rem;
         background: linear-gradient(90deg, transparent, color(background));
     }
+
+    &:hover .carousel-btn {
+        opacity: 1;
+    }
 }
 .carousel-row {
     overflow-x: scroll;
@@ -40,9 +44,6 @@
     outline: none;
     border: none;
     cursor: pointer;
-    &:hover {
-        opacity: 1;
-    }
 
     @media (hover: none) and (pointer: coarse) {
         display: none;

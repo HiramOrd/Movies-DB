@@ -3,5 +3,13 @@
 @import '/src/styles/components/containers';
 
 .movies__genres {
+    display: none;
     margin-bottom: 10rem;
+    flex-wrap: wrap;
+    gap: $gap-sm;
+    justify-content: center;
+
+    @media screen and (min-width: $media-md) {
+        display: flex;
+    }
 }
