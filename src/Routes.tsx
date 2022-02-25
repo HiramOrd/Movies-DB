@@ -1,6 +1,6 @@
 import { Navigate, RouteObject } from 'react-router-dom';
 import { Layout } from 'layouts/Layout';
-import { MoviesView, MovieView } from 'views';
+import { MoviesView, MovieView, SearchView } from 'views';
 import { ROUTES } from 'constants/routes';
 
 export const routes: RouteObject[] = [
@@ -14,6 +14,7 @@ export const routes: RouteObject[] = [
                 children: [
                     { index: true, element: <MoviesView /> },
                     { path: ROUTES.movie + ':movieID', element: <MovieView /> },
+                    { path: ROUTES.search, element: <SearchView /> },
                     { path: '*', element: <Navigate to={ROUTES.movies} /> },
                 ],
             },

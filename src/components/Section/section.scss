@@ -4,6 +4,9 @@
     position: relative;
     overflow: hidden;
     margin-bottom: $gap-md;
+
+    animation: fadeIn;
+    animation-duration: $anim-speed;
 }
 
 .section-title {

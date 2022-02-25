@@ -50,4 +50,13 @@ export class Repository implements RepositoryInterface {
                 .catch(reject);
         });
     }
+
+    getSearch(name: string, page: number = 1): Promise<MoviesResponse> {
+        return new Promise((resolve, reject) => {
+            tmdbAPI
+                .get(`/search/movie?query=${name}&page=${page}`)
+                .then((response) => resolve(response.data))
+                .catch(reject);
+        });
+    }
 }

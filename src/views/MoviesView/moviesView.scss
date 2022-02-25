@@ -9,6 +9,9 @@
     gap: $gap-sm;
     justify-content: center;
 
+    animation: fadeIn;
+    animation-duration: $anim-speed;
+
     @media screen and (min-width: $media-md) {
         display: flex;
     }

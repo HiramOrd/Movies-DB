@@ -7,6 +7,7 @@ export interface Repository {
     getTopRated(page?: number): Promise<MoviesResponse>;
     getUpcoming(page?: number): Promise<MoviesResponse>;
     getGenres(): Promise<GenresResponse>;
+    getSearch(name: string, page?: number): Promise<MoviesResponse>;
 }
 
 export interface MoviesResponse {

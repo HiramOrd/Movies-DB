@@ -1,7 +1,12 @@
 @import '/src/styles/globals';
 
 .poster-img {
-    height: 180px;
+    animation: fadeIn;
+    animation-duration: $anim-speed;
+
+    height: 250px;
+    aspect-ratio: 11/17;
+    object-fit: cover;
 
     @media (min-width: $media-md) {
         height: 300px;

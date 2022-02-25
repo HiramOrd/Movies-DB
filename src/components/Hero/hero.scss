@@ -6,6 +6,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    animation: fadeIn;
+    animation-duration: $anim-speed;
 }
 
 .hero__section {

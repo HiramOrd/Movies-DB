@@ -8,6 +8,7 @@ interface MoviesState {
     topRated: MoviesResponse | null;
     upcoming: MoviesResponse | null;
     genres: Genre[] | null;
+    search: MoviesResponse | null;
     loading: boolean;
 }
 
@@ -17,6 +18,7 @@ const initialState: MoviesState = {
     topRated: null,
     upcoming: null,
     genres: null,
+    search: null,
     loading: false,
 };
 
@@ -112,6 +114,25 @@ const moviesSlice = createSlice({
                 state.genres = action.payload.genres;
             }
         },
+
+        setSearch: (
+            state: MoviesState,
+            action: PayloadAction<MoviesResponse | null>
+        ) => {
+            state.search = action.payload;
+        },
+        updateSearch: (
+            state: MoviesState,
+            action: PayloadAction<MoviesResponse>
+        ) => {
+            state.search = {
+                ...action.payload,
+                results: [
+                    ...state.search?.results!,
+                    ...action.payload.results!,
+                ],
+            };
+        },
     },
 });
 
@@ -126,5 +147,7 @@ export const {
     setUpcoming,
     updateUpcoming,
     setGenres,
+    setSearch,
+    updateSearch,
 } = moviesSlice.actions;
 export const moviesReducer = moviesSlice.reducer;
