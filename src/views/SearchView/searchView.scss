@@ -1,5 +1,4 @@
 @import '/src/styles/globals';
-@import '/src/styles/components/containers';
 
 .search {
     animation: fadeIn;
@@ -11,15 +10,4 @@
     margin-bottom: $gap-xl;
     font-size: $text-xl;
     font-weight: 400;
-}
-
-.search__container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $gap-xl $gap-sm;
-    justify-content: space-around;
-}
-
-.search__not-found {
-    font-size: $text-md;
 }

@@ -1,0 +1,12 @@
+@import '/src/styles/globals';
+
+.search__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $gap-xl $gap-sm;
+    justify-content: space-around;
+}
+
+.search__not-found {
+    font-size: $text-md;
+}
